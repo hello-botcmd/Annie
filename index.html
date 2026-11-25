@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5f8">
+  <meta name="description" content="Anaya's little world ♡">
+  <title>Anaya's Little World ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #d88ca9;
+      --deep-pink: #a65e7e;
+      --light-pink: #fce9f0;
+      --text: #775b68;
+      --border: #f2dce5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 10% 15%, #fce0eb 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, #f8e5f0 0%, transparent 40%),
+        #fff9fc;
+      overflow-x: hidden;
+    }
+
+    .flower {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      color: #d88ca9;
+      font-size: 100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .flower.one {
+      top: 5%;
+      left: -25px;
+    }
+
+    .flower.two {
+      top: 35%;
+      right: -30px;
+      font-size: 140px;
+      animation-delay: -3s;
+    }
+
+    .flower.three {
+      bottom: 5%;
+      left: 2%;
+      font-size: 90px;
+      animation-delay: -5s;
+    }
+
+    .flower.four {
+      top: 75%;
+      right: 5%;
+      font-size: 70px;
+      animation-delay: -2s;
+    }
+
+    @keyframes float {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -15px; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 28px 18px 35px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      padding: 0 5px;
+    }
+
+    .brand {
+      color: var(--deep-pink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .flower-icon {
+      color: var(--pink);
+      font-size: 25px;
+    }
+
+    .profile {
+      position: relative;
+      padding: 25px 22px 30px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid white;
+      border-radius: 28px;
+      box-shadow: 0 15px 45px rgba(181, 119, 148, 0.12);
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .profile::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background:
+        radial-gradient(ellipse at 20% 20%, #f4cbdc, transparent 65%),
+        #fce8f0;
+      z-index: 0;
+    }
+
+    .cover-flower {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 65px;
+      opacity: 0.5;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+      margin: 10px auto 20px;
+      padding: 5px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 5px 20px rgba(181, 119, 148, 0.2);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fce9f0;
+    }
+
+    .name {
+      position: relative;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 7vw, 38px);
+      font-weight: 500;
+      color: var(--deep-pink);
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      max-width: 340px;
+      margin: 0 auto 18px;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #a77d90;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 8px 15px;
+      background: #fff3f7;
+      border: 1px solid #f4dce6;
+      border-radius: 30px;
+      font-size: 12px;
+      color: var(--deep-pink);
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      font-weight: 500;
+      color: var(--deep-pink);
+    }
+
+    .section-title span {
+      color: #d89bb2;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .info-card {
+      padding: 20px 16px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(181, 119, 148, 0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(181, 119, 148, 0.12);
+    }
+
+    .card-icon {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 23px;
+    }
+
+    .info-card h3 {
+      margin-bottom: 9px;
+      font-family: "Playfair Display", serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--deep-pink);
+    }
+
+    .info-card p {
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+      color: #987b89;
+    }
+
+    .group-card {
+      margin-top: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #fce8f0, #fff1f6);
+      border: 1px solid #f6dce7;
+      border-radius: 23px;
+    }
+
+    .group-card h2 {
+      margin-bottom: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      font-weight: 500;
+      color: var(--deep-pink);
+    }
+
+    .group-card p {
+      margin: 0 auto 20px;
+      max-width: 350px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #987b89;
+    }
+
+    .group-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 25px;
+      background: linear-gradient(135deg, #d98eab, #c7799a);
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(194, 117, 151, 0.22);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .group-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(194, 117, 151, 0.3);
+    }
+
+    .footer {
+      padding: 28px 10px 0;
+      text-align: center;
+      color: #bd91a4;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer span {
+      color: var(--pink);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page { padding: 20px 12px; }
+      .profile { padding: 20px 15px 25px; }
+      .info-card { padding: 17px 13px; }
+      .info-card h3 { font-size: 15px; }
+      .info-card p { font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="flower one">✿</div>
+  <div class="flower two">❀</div>
+  <div class="flower three">❁</div>
+  <div class="flower four">✿</div>
+
+  <main class="page">
+
+    <header class="topbar">
+      <span class="brand">♡ MY LITTLE WORLD</span>
+      <span class="flower-icon">❀</span>
+    </header>
+
+    <!-- My profile -->
+    <section class="profile">
+      <span class="cover-flower">✿</span>
+
+      <div class="avatar-wrap">
+        <img
+          class="avatar"
+          src="https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg"
+          alt="Anaya's profile photo"
+        >
+      </div>
+
+      <h1 class="name">Anaya ♡</h1>
+
+      <p class="bio">
+        Lost in my own intricacies
+      </p>
+
+      <div class="pills">
+        <span class="pill">Age · 18</span>
+        <span class="pill">📍 Kolkata</span>
+      </div>
+    </section>
+
+    <!-- My personal information -->
+    <h2 class="section-title">
+      A Little About Me <span>♡</span>
+    </h2>
+
+    <section class="grid">
+
+      <article class="info-card">
+        <span class="card-icon">🌸</span>
+        <h3>My Hobbies</h3>
+        <p>Watching shows<br>Bigg Boss is my favorite!</p>
+      </article>
+
+      <article class="info-card">
+        <span class="card-icon">✨</span>
+        <h3>My Skills</h3>
+        <p>Acting & Singing</p>
+      </article>
+
+      <article class="info-card">
+        <span class="card-icon">♡</span>
+        <h3>My Best Friend</h3>
+        <p>anyu</p>
+      </article>
+
+      <article class="info-card">
+        <span class="card-icon">🌷</span>
+        <h3>My Location</h3>
+        <p>Kolkata, India</p>
+      </article>
+
+    </section>
+
+    <!-- My Telegram group -->
+    <section class="group-card">
+      <h2>My Chatting Group ♡</h2>
+
+      <p>
+        a 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗁𝖺𝗈𝗌,
+        𝖺 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗅𝖺𝗌𝗌
+      </p>
+
+      <a
+        class="group-button"
+        href="https://t.me/+duBCykOnt4E3NmU5"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join My Group ♡
+      </a>
+    </section>
+
+    <footer class="footer">
+      made with <span>♥</span> and a little bit of magic
+      <br>
+      <span>✿</span> MY LITTLE WORLD <span>✿</span>
+    </footer>
+
+  </main>
+
+</body>
+</html>
