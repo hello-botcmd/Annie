@@ -1,441 +1,326 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff5f8">
-  <meta name="description" content="Anaya's little world ♡">
-  <title>Anaya's Little World ♡</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --pink: #d88ca9;
-      --deep-pink: #a65e7e;
-      --light-pink: #fce9f0;
-      --text: #775b68;
-      --border: #f2dce5;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(ellipse at 10% 15%, #fce0eb 0%, transparent 40%),
-        radial-gradient(ellipse at 90% 80%, #f8e5f0 0%, transparent 40%),
-        #fff9fc;
-      overflow-x: hidden;
-    }
-
-    .flower {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.35;
-      color: #d88ca9;
-      font-size: 100px;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .flower.one {
-      top: 5%;
-      left: -25px;
-    }
-
-    .flower.two {
-      top: 35%;
-      right: -30px;
-      font-size: 140px;
-      animation-delay: -3s;
-    }
-
-    .flower.three {
-      bottom: 5%;
-      left: 2%;
-      font-size: 90px;
-      animation-delay: -5s;
-    }
-
-    .flower.four {
-      top: 75%;
-      right: 5%;
-      font-size: 70px;
-      animation-delay: -2s;
-    }
-
-    @keyframes float {
-      0%, 100% { translate: 0 0; }
-      50% { translate: 0 -15px; }
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 28px 18px 35px;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 25px;
-      padding: 0 5px;
-    }
-
-    .brand {
-      color: var(--deep-pink);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .flower-icon {
-      color: var(--pink);
-      font-size: 25px;
-    }
-
-    .profile {
-      position: relative;
-      padding: 25px 22px 30px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid white;
-      border-radius: 28px;
-      box-shadow: 0 15px 45px rgba(181, 119, 148, 0.12);
-      overflow: hidden;
-      animation: fadeUp 0.8s ease both;
-    }
-
-    .profile::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 150px;
-      background:
-        radial-gradient(ellipse at 20% 20%, #f4cbdc, transparent 65%),
-        #fce8f0;
-      z-index: 0;
-    }
-
-    .cover-flower {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 65px;
-      opacity: 0.5;
-    }
-
-    .avatar-wrap {
-      position: relative;
-      z-index: 1;
-      width: 120px;
-      height: 120px;
-      margin: 10px auto 20px;
-      padding: 5px;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 5px 20px rgba(181, 119, 148, 0.2);
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #fce9f0;
-    }
-
-    .name {
-      position: relative;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 7vw, 38px);
-      font-weight: 500;
-      color: var(--deep-pink);
-      margin-bottom: 8px;
-    }
-
-    .bio {
-      max-width: 340px;
-      margin: 0 auto 18px;
-      font-family: "Playfair Display", serif;
-      font-style: italic;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #a77d90;
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .pill {
-      padding: 8px 15px;
-      background: #fff3f7;
-      border: 1px solid #f4dce6;
-      border-radius: 30px;
-      font-size: 12px;
-      color: var(--deep-pink);
-    }
-
-    .section-title {
-      margin: 30px 0 15px;
-      text-align: center;
-      font-family: "Playfair Display", serif;
-      font-size: 23px;
-      font-weight: 500;
-      color: var(--deep-pink);
-    }
-
-    .section-title span {
-      color: #d89bb2;
-      font-size: 17px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .info-card {
-      padding: 20px 16px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 5px 18px rgba(181, 119, 148, 0.06);
-      transition: transform 0.25s, box-shadow 0.25s;
-      animation: fadeUp 0.8s ease both;
-    }
-
-    .info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(181, 119, 148, 0.12);
-    }
-
-    .card-icon {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 23px;
-    }
-
-    .info-card h3 {
-      margin-bottom: 9px;
-      font-family: "Playfair Display", serif;
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--deep-pink);
-    }
-
-    .info-card p {
-      font-size: 13px;
-      line-height: 1.7;
-      overflow-wrap: anywhere;
-      color: #987b89;
-    }
-
-    .group-card {
-      margin-top: 18px;
-      padding: 24px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #fce8f0, #fff1f6);
-      border: 1px solid #f6dce7;
-      border-radius: 23px;
-    }
-
-    .group-card h2 {
-      margin-bottom: 10px;
-      font-family: "Playfair Display", serif;
-      font-size: 23px;
-      font-weight: 500;
-      color: var(--deep-pink);
-    }
-
-    .group-card p {
-      margin: 0 auto 20px;
-      max-width: 350px;
-      font-size: 13px;
-      line-height: 1.8;
-      color: #987b89;
-    }
-
-    .group-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 25px;
-      background: linear-gradient(135deg, #d98eab, #c7799a);
-      border-radius: 30px;
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 6px 15px rgba(194, 117, 151, 0.22);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .group-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(194, 117, 151, 0.3);
-    }
-
-    .footer {
-      padding: 28px 10px 0;
-      text-align: center;
-      color: #bd91a4;
-      font-size: 12px;
-      letter-spacing: 0.5px;
-    }
-
-    .footer span {
-      color: var(--pink);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 380px) {
-      .page { padding: 20px 12px; }
-      .profile { padding: 20px 15px 25px; }
-      .info-card { padding: 17px 13px; }
-      .info-card h3 { font-size: 15px; }
-      .info-card p { font-size: 12px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5f8">
+<title>Anaya's Little World ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#d88ca9;--deep:#a65e7e;--text:#775b68;--soft:#987b89;--border:#f2dce5;--card:rgba(255,255,255,.88);--bg:#fff9fc;--g1:#fce0eb;--g2:#f8e5f0;--chip:#fff3f7}
+body.night{--pink:#e7a6c0;--deep:#f0b9d0;--text:#d8c3d0;--soft:#b9a2b3;--border:#4a3a5c;--card:rgba(48,36,68,.85);--bg:#1b1430;--g1:#2d2050;--g2:#3a2250;--chip:#3a2d54}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;font-family:"DM Sans",sans-serif;color:var(--text);background:radial-gradient(ellipse at 10% 15%,var(--g1),transparent 40%),radial-gradient(ellipse at 90% 80%,var(--g2),transparent 40%),var(--bg);overflow-x:hidden;transition:background .6s,color .6s}
+#petals{position:fixed;inset:0;z-index:0;pointer-events:none}
+.page{position:relative;z-index:1;max-width:540px;margin:0 auto;padding:28px 18px 35px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding:0 5px}
+.brand{color:var(--deep);font-size:12px;font-weight:700;letter-spacing:2px}
+.tools{display:flex;gap:8px}
+.round{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--deep);font-size:16px;cursor:pointer;transition:transform .2s}
+.round:hover{transform:scale(1.12) rotate(8deg)}
+.welcome{margin-bottom:16px;padding:14px 18px;text-align:center;font-family:"Playfair Display",serif;font-style:italic;font-size:14px;line-height:1.7;color:var(--soft);background:var(--card);border:1px dashed var(--pink);border-radius:20px;animation:fadeUp .8s both}
+.profile{position:relative;padding:25px 22px 30px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:28px;box-shadow:0 15px 45px rgba(181,119,148,.12);overflow:hidden;animation:fadeUp .8s both}
+.profile::before{content:"";position:absolute;top:0;left:0;width:100%;height:150px;background:radial-gradient(ellipse at 20% 20%,var(--g1),transparent 65%),var(--g2)}
+.avatar-wrap{position:relative;width:120px;height:120px;margin:10px auto 20px;padding:5px;border-radius:50%;background:#fff;box-shadow:0 5px 20px rgba(181,119,148,.25)}
+.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fce9f0}
+.name{position:relative;font-family:"Playfair Display",serif;font-size:clamp(30px,7vw,38px);font-weight:500;color:var(--deep);margin-bottom:8px}
+.bio{margin:0 auto 18px;font-family:"Playfair Display",serif;font-style:italic;font-size:15px;color:var(--soft)}
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{padding:8px 15px;background:var(--chip);border:1px solid var(--border);border-radius:30px;font-size:12px;color:var(--deep)}
+.section-title{margin:32px 0 15px;text-align:center;font-family:"Playfair Display",serif;font-size:23px;font-weight:500;color:var(--deep)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{padding:20px 16px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 5px 18px rgba(181,119,148,.06);transition:transform .25s;animation:fadeUp .8s both}
+.card:hover{transform:translateY(-4px)}
+.card .ic{display:block;margin-bottom:10px;font-size:23px}
+.card h3{margin-bottom:8px;font-family:"Playfair Display",serif;font-size:17px;font-weight:500;color:var(--deep)}
+.card p{font-size:13px;line-height:1.7;color:var(--soft);overflow-wrap:anywhere}
+/* gallery */
+.car{position:relative}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 8px 24px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.polaroid{flex:0 0 72%;scroll-snap-align:center;background:#fff;padding:12px 12px 14px;border:3px solid #f6cfdd;border-radius:6px;box-shadow:0 10px 25px rgba(181,119,148,.2);transform:rotate(-3deg);transition:transform .3s}
+.polaroid:nth-child(even){transform:rotate(3deg)}
+.polaroid:hover{transform:rotate(0) scale(1.03)}
+.polaroid img{width:100%;aspect-ratio:1;object-fit:cover;background:#fce9f0;display:block}
+.polaroid span{display:block;margin-top:10px;text-align:center;font-family:"Caveat",cursive;font-size:20px;color:#a65e7e}
+.arrows{display:flex;justify-content:center;gap:12px}
+/* note */
+.note{position:relative;padding:26px 24px;background:#fffbe9;color:#8a6a5a;border-radius:8px;box-shadow:0 8px 22px rgba(181,119,148,.18);transform:rotate(-1deg);font-family:"Caveat",cursive;font-size:22px;line-height:1.5;background-image:repeating-linear-gradient(transparent,transparent 32px,#f3dfe6 33px)}
+body.night .note{background-color:#3b2f52;color:#f0dbe6;background-image:repeating-linear-gradient(transparent,transparent 32px,#54446e 33px)}
+.note b{display:block;margin-top:10px;text-align:right;color:var(--pink)}
+.note::before{content:"♡";position:absolute;top:-14px;left:50%;font-size:28px;color:var(--pink)}
+/* boxes */
+.box{padding:22px 20px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:23px}
+.box p{font-size:13px;line-height:1.8;color:var(--soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;margin-top:14px;background:linear-gradient(135deg,#d98eab,#c7799a);border:0;border-radius:30px;color:#fff;font:600 13px "DM Sans",sans-serif;text-decoration:none;cursor:pointer;box-shadow:0 6px 15px rgba(194,117,151,.25);transition:transform .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.alt{background:var(--chip);color:var(--deep);border:1px solid var(--border);box-shadow:none}
+.heart{font-size:54px;background:none;border:0;cursor:pointer;animation:beat 1.6s infinite}
+.reveal{max-height:0;opacity:0;overflow:hidden;transition:all .8s;font-family:"Playfair Display",serif;font-style:italic;line-height:1.8;color:var(--deep)}
+.reveal.on{max-height:420px;opacity:1;margin-top:12px}
+.mood-e{font-size:56px;display:block;transition:transform .4s}
+.mood-t{font-family:"Playfair Display",serif;font-size:19px;color:var(--deep);margin:6px 0 2px}
+.mood-c{font-size:12px;color:var(--soft)}
+/* love meter */
+.meter{position:relative;height:22px;margin:16px 0 8px;background:var(--chip);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#f4b6cc,#d86a98,#ff8fb8);background-size:200% 100%;animation:shine 2s linear infinite;border-radius:20px;transition:width .08s linear}
+.pct{font-family:"Playfair Display",serif;font-size:30px;color:var(--deep)}
+.lheart{font-size:46px;display:block;margin-bottom:6px}.lheart.scan{animation:shake .3s infinite}.lname{width:80%;max-width:240px;padding:9px 14px;margin-bottom:8px;text-align:center;border:1px solid var(--border);border-radius:20px;background:var(--chip);color:var(--text);font:13px "DM Sans",sans-serif;outline:none}@keyframes shake{25%{transform:rotate(-14deg) scale(1.15)}75%{transform:rotate(14deg) scale(1.15)}}.pop{animation:pop .5s}@keyframes pop{50%{transform:scale(1.35)}}
+.stats{display:flex;justify-content:center;gap:12px;margin-top:30px}
+.stat{flex:1;padding:14px;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:18px}
+.stat b{display:block;font-family:"Playfair Display",serif;font-size:22px;color:var(--deep)}
+.stat span{font-size:11px;color:var(--soft)}
+.like{cursor:pointer;border:1px solid var(--border);font-family:inherit}
+.like.liked{border-color:var(--pink)}
+.footer{padding:26px 10px 0;text-align:center;color:var(--soft);font-size:12px}
+.toast{position:fixed;left:50%;bottom:24px;translate:-50% 80px;padding:10px 20px;background:var(--deep);color:#fff;border-radius:30px;font-size:13px;z-index:50;transition:translate .4s}
+.toast.on{translate:-50% 0}
+#cur{position:fixed;top:0;left:0;z-index:99;pointer-events:none;font-size:20px;color:var(--pink);display:none;translate:-50% -50%}
+@media (hover:hover) and (pointer:fine){#cur{display:block}body,button,a{cursor:none!important}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes beat{50%{transform:scale(1.18)}}
+@keyframes shine{to{background-position:200% 0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
-
 <body>
+<canvas id="petals"></canvas>
+<div id="cur">✿</div>
+<div class="toast" id="toast"></div>
+<audio id="aud" loop preload="auto"></audio>
 
-  <div class="flower one">✿</div>
-  <div class="flower two">❀</div>
-  <div class="flower three">❁</div>
-  <div class="flower four">✿</div>
+<main class="page">
+<header class="topbar">
+  <span class="brand">♡ MY LITTLE WORLD</span>
+  <div class="tools">
+    <button class="round" id="musicBtn" aria-label="Toggle music">♪</button>
+    <button class="round" id="themeBtn" aria-label="Toggle day and night">☾</button>
+  </div>
+</header>
 
-  <main class="page">
+<p class="welcome" id="welcome"></p>
 
-    <header class="topbar">
-      <span class="brand">♡ MY LITTLE WORLD</span>
-      <span class="flower-icon">❀</span>
-    </header>
+<section class="profile">
+  <div class="avatar-wrap"><img class="avatar" src="https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg" alt="Anaya's profile photo"></div>
+  <h1 class="name">Anaya ♡</h1>
+  <p class="bio">Lost in my own intricacies</p>
+  <div class="pills"><span class="pill">Age · 18</span><span class="pill">📍 Kolkata</span></div>
+</section>
 
-    <!-- My profile -->
-    <section class="profile">
-      <span class="cover-flower">✿</span>
+<h2 class="section-title">A Little About Me ♡</h2>
+<section class="grid">
+  <article class="card"><span class="ic">🌸</span><h3>My Hobbies</h3><p>Watching shows<br>Bigg Boss is my favorite!</p></article>
+  <article class="card"><span class="ic">✨</span><h3>My Skills</h3><p>Acting &amp; Singing</p></article>
+  <article class="card"><span class="ic">♡</span><h3>My Best Friend</h3><p>anyu</p></article>
+  <article class="card"><span class="ic">🌷</span><h3>My Location</h3><p>Kolkata, India</p></article>
+</section>
 
-      <div class="avatar-wrap">
-        <img
-          class="avatar"
-          src="https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg"
-          alt="Anaya's profile photo"
-        >
-      </div>
+<h2 class="section-title">My Little Gallery ✿</h2>
+<div class="car">
+  <div class="track" id="track"></div>
+  <div class="arrows"><button class="round" id="prev" aria-label="Previous">‹</button><button class="round" id="next" aria-label="Next">›</button></div>
+</div>
 
-      <h1 class="name">Anaya ♡</h1>
+<h2 class="section-title">A Little Note From Me</h2>
+<div class="note">Be soft in a world that tries to make you hard. Bloom anyway, in your own time, in your own way.<b>— Anaya ♡</b></div>
 
-      <p class="bio">
-        Lost in my own intricacies
-      </p>
+<h2 class="section-title">Mood of the Moment 🌸</h2>
+<section class="box">
+  <span class="mood-e" id="moodE"></span>
+  <p class="mood-t" id="moodT"></p>
+  <p class="mood-c" id="moodC"></p>
+  <div class="reveal" id="moodS"></div>
+  <button class="btn alt" id="moodRoll">Tap to see my mood ✿</button>
+</section>
 
-      <div class="pills">
-        <span class="pill">Age · 18</span>
-        <span class="pill">📍 Kolkata</span>
-      </div>
-    </section>
+<h2 class="section-title">A Secret For You</h2>
+<section class="box">
+  <button class="heart" id="secretBtn" aria-label="Reveal secret message">💗</button>
+  <p>Tap the heart, if you dare</p>
+  <div class="reveal" id="secret"></div>
+</section>
 
-    <!-- My personal information -->
-    <h2 class="section-title">
-      A Little About Me <span>♡</span>
-    </h2>
+<h2 class="section-title">Love Meter ♡</h2>
+<section class="box">
+  <span class="lheart" id="lheart">💞</span>
+  <input class="lname" id="lname" maxlength="20" placeholder="Your name (optional)" autocomplete="off">
+  <div class="pct" id="pct">0%</div>
+  <div class="meter"><div class="fill" id="fill"></div></div>
+  <p id="meterMsg">Tap the button to see how much love is in the air</p>
+  <button class="btn" id="hold">Check the love 💘</button>
+</section>
 
-    <section class="grid">
+<section class="box" style="margin-top:18px">
+  <h2 style="font-family:'Playfair Display',serif;font-size:23px;font-weight:500;color:var(--deep);margin-bottom:10px">My Chatting Group ♡</h2>
+  <p>a 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗁𝖺𝗈𝗌, 𝖺 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗅𝖺𝗌𝗌</p>
+  <a class="btn" href="https://t.me/+duBCykOnt4E3NmU5" target="_blank" rel="noopener noreferrer">Join My Group ♡</a>
+  <br>
+  <button class="btn alt" id="copyTg">Copy my Telegram ✿</button>
+</section>
 
-      <article class="info-card">
-        <span class="card-icon">🌸</span>
-        <h3>My Hobbies</h3>
-        <p>Watching shows<br>Bigg Boss is my favorite!</p>
-      </article>
+<section class="stats">
+  <div class="stat"><b>1K+</b><span>people visited 🌷</span></div>
+  <button class="stat like" id="like"><b id="likes">596</b><span id="likeLbl">♡ tap to like</span></button>
+</section>
 
-      <article class="info-card">
-        <span class="card-icon">✨</span>
-        <h3>My Skills</h3>
-        <p>Acting & Singing</p>
-      </article>
+<footer class="footer">made with <span style="color:var(--pink)">♥</span> and a little bit of magic<br>✿ MY LITTLE WORLD ✿</footer>
+</main>
 
-      <article class="info-card">
-        <span class="card-icon">♡</span>
-        <h3>My Best Friend</h3>
-        <p>anyu</p>
-      </article>
+<script>
+const SETTINGS={
+  telegram:"https://t.me/qncez",
+  music:"https://files.catbox.moe/m8os68.m4a",
+  welcomeMessage:"Welcome to my little world ♡ A little place for soft hearts, silly thoughts, and beautiful little moments.",
+  secretMessage:"Love is a little like a flower. It doesn’t ask the sun to stay forever; it simply blooms while the light is there. And if the sun leaves, it still remembers how to turn toward the light. ♡"
+};
+// Replace these with your own photos and captions
+const PHOTOS=[
+  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"me, being me ♡"},
+  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"a soft little day"},
+  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"favourite moment ✿"}
+];
+const MOODS=[
+  {e:"🌸",t:"Feeling peaceful",c:"soft as a petal today",s:"Peace isn’t quiet. It’s a warm place inside the noise."},
+  {e:"🎤",t:"Main character mode",c:"humming a song nobody asked for",s:"Secret: I sing in the mirror and I give myself awards."},
+  {e:"📺",t:"Binge-watching era",c:"just one more episode (said 6 times)",s:"Secret: I have a strong opinion on every Bigg Boss contestant."},
+  {e:"🌙",t:"Dreamy & distant",c:"lost in my own intricacies",s:"Secret: my best thoughts show up at 2 a.m."},
+  {e:"🍓",t:"Sweet & a little silly",c:"say something funny, I dare you",s:"Secret: I laugh at my own jokes first."},
+  {e:"🦋",t:"Feeling hopeful",c:"something good is on its way",s:"Secret: I always make a wish at 11:11."},
+  {e:"☕",t:"Cozy & cuddly",c:"blanket, tea, and zero plans",s:"Secret: I’m always up for a late-night chat."},
+  {e:"✨",t:"Glowing today",c:"don’t mind me, just sparkling",s:"Secret: I practised this smile 😌"}
+];
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2200)}
 
-      <article class="info-card">
-        <span class="card-icon">🌷</span>
-        <h3>My Location</h3>
-        <p>Kolkata, India</p>
-      </article>
+$("welcome").textContent=SETTINGS.welcomeMessage;
+$("secret").textContent=SETTINGS.secretMessage;
 
-    </section>
+/* gallery */
+$("track").innerHTML=PHOTOS.map(p=>`<figure class="polaroid"><img src="${p.src}" alt="${p.cap}" loading="lazy"><span>${p.cap}</span></figure>`).join("");
+const step=()=>$("track").clientWidth*.75;
+$("prev").onclick=()=>$("track").scrollBy({left:-step(),behavior:"smooth"});
+$("next").onclick=()=>$("track").scrollBy({left:step(),behavior:"smooth"});
 
-    <!-- My Telegram group -->
-    <section class="group-card">
-      <h2>My Chatting Group ♡</h2>
+/* mood: changes every 6 hours by default, or on tap */
+let mi;
+function showMood(i){
+  mi=i;const m=MOODS[i];
+  $("moodE").textContent=m.e;$("moodT").textContent=m.t+" "+m.e;$("moodC").textContent=m.c;
+  $("moodS").textContent=m.s;$("moodS").classList.remove("on");
+  $("moodE").style.transform="scale(1.3) rotate(10deg)";setTimeout(()=>$("moodE").style.transform="",400);
+}
+const d=new Date();
+$("moodE").textContent="🌸";$("moodT").textContent="What’s my mood right now?";$("moodC").textContent="tap the button to find out";
+$("moodE").parentElement.addEventListener("click",e=>{if(mi!==undefined&&!e.target.closest("#moodRoll"))$("moodS").classList.toggle("on")});
+$("moodRoll").onclick=e=>{let n;do{n=Math.floor(Math.random()*MOODS.length)}while(n===mi);showMood(n);burst(e.clientX,e.clientY,8);$("moodC").textContent=MOODS[n].c+" · tap my mood for a secret"};
 
-      <p>
-        a 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗁𝖺𝗈𝗌,
-        𝖺 𝗅𝗂𝗍𝗍𝗅𝖾 𝖼𝗅𝖺𝗌𝗌
-      </p>
+/* secret */
+$("secretBtn").onclick=e=>{$("secret").classList.toggle("on");burst(e.clientX,e.clientY,14)};
 
-      <a
-        class="group-button"
-        href="https://t.me/+duBCykOnt4E3NmU5"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Join My Group ♡
-      </a>
-    </section>
+/* copy telegram */
+$("copyTg").onclick=async()=>{
+  try{await navigator.clipboard.writeText(SETTINGS.telegram)}catch(e){
+    const t=document.createElement("textarea");t.value=SETTINGS.telegram;document.body.appendChild(t);t.select();try{document.execCommand("copy")}catch(_){}t.remove()}
+  toast("Telegram link copied ♡");
+};
 
-    <footer class="footer">
-      made with <span>♥</span> and a little bit of magic
-      <br>
-      <span>✿</span> MY LITTLE WORLD <span>✿</span>
-    </footer>
+/* theme */
+function setTheme(n){document.body.classList.toggle("night",n);$("themeBtn").textContent=n?"☀":"☾";store.set("theme",n?"night":"day")}
+setTheme(store.get("theme")?store.get("theme")==="night":(d.getHours()>=19||d.getHours()<6));
+$("themeBtn").onclick=()=>setTheme(!document.body.classList.contains("night"));
 
-  </main>
+/* music: starts on load; if the browser blocks that, it starts on the first tap or key */
+const aud=$("aud");aud.src=SETTINGS.music;aud.volume=.6;
+const sync=()=>{$("musicBtn").textContent=aud.paused?"♪":"❚❚"};
+aud.addEventListener("play",sync);aud.addEventListener("pause",sync);
+let userPaused=false;
+const evs=["pointerdown","keydown","touchend"];
+const off=()=>evs.forEach(e=>removeEventListener(e,unlock,true));
+function unlock(e){if(e.target.closest&&e.target.closest("#musicBtn"))return;off();if(!userPaused)aud.play().catch(()=>{})}
+aud.play().catch(()=>evs.forEach(e=>addEventListener(e,unlock,true)));
+$("musicBtn").onclick=()=>{
+  off();
+  if(aud.paused){userPaused=false;aud.play().catch(()=>toast("Couldn’t play the music"))}
+  else{userPaused=true;aud.pause()}
+};
 
+/* likes */
+let liked=store.get("liked")==="1";
+function paintLike(){$("likes").textContent=596+(liked?1:0);$("like").classList.toggle("liked",liked);$("likeLbl").textContent=liked?"♥ you liked this":"♡ tap to like"}
+paintLike();
+$("like").onclick=e=>{liked=!liked;store.set("liked",liked?"1":"0");paintLike();if(liked)burst(e.clientX,e.clientY,16)};
+
+/* love meter: random reading on every tap */
+const MSG=[[0,"The love is warming up 🌱"],[45,"Sweet and steady, like a soft breeze 🌷"],[65,"Ooh, that’s real love ♡"],[85,"So much love, I’m blushing 🥺"],[97,"MAX LOVE! Pure soulmate energy 💖"]];
+let busy=false;
+const paint=v=>{$("pct").textContent=Math.round(v)+"%";$("fill").style.width=v+"%"};
+$("hold").onclick=()=>{
+  if(busy)return;busy=true;
+  const nm=$("lname").value.trim(),target=Math.floor(35+Math.random()*66),hb=$("lheart");
+  hb.classList.add("scan");paint(0);
+  $("meterMsg").textContent=(nm?nm+", ":"")+"reading the love vibes…";
+  let v=0;
+  const t=setInterval(()=>{
+    v=Math.min(target,v+1+Math.random()*3);paint(v);
+    const r=$("fill").getBoundingClientRect();
+    if(Math.random()<.5)burst(r.left+r.width*v/100,r.top+r.height/2,2);
+    if(v>=target){
+      clearInterval(t);busy=false;hb.classList.remove("scan");
+      let m=MSG[0][1];MSG.forEach(x=>{if(target>=x[0])m=x[1]});
+      $("meterMsg").textContent=(nm?nm+", ":"")+m;
+      $("pct").classList.remove("pop");void $("pct").offsetWidth;$("pct").classList.add("pop");
+      burst(innerWidth/2,innerHeight/2,Math.round(target/2));
+    }
+  },50);
+};
+
+/* custom cursor */
+const cur=$("cur");let mx=-100,my=-100;
+addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+"px";cur.style.top=my+"px"});
+
+/* petals: float, drift away from cursor, burst on tap */
+const cv=$("petals"),cx=cv.getContext("2d");let W,H,P=[];
+const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+addEventListener("resize",size);size();
+function mk(x,y,burstMode){
+  const s=6+Math.random()*9;
+  return{x:x??Math.random()*W,y:y??-20,s,vy:burstMode?-(2+Math.random()*4):.5+Math.random()*1.1,vx:burstMode?(Math.random()-.5)*7:(Math.random()-.5)*.4,
+    r:Math.random()*6.28,vr:(Math.random()-.5)*.05,ph:Math.random()*6.28,a:.45+Math.random()*.4,
+    h:burstMode&&Math.random()<.5?"heart":"petal",hue:325+Math.random()*25}
+}
+for(let i=0;i<(still?0:34);i++){const p=mk();p.y=Math.random()*H;P.push(p)}
+function burst(x,y,n){for(let i=0;i<n;i++)P.push(mk(x,y,true))}
+addEventListener("pointerdown",e=>{if(!e.target.closest("#hold"))burst(e.clientX,e.clientY,8)});
+function draw(p){
+  cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.globalAlpha=p.a;
+  cx.fillStyle=`hsl(${p.hue},70%,${document.body.classList.contains("night")?78:80}%)`;
+  cx.beginPath();
+  if(p.h==="heart"){const s=p.s*.9;cx.moveTo(0,s*.4);cx.bezierCurveTo(-s,-s*.4,-s*.4,-s,0,-s*.35);cx.bezierCurveTo(s*.4,-s,s,-s*.4,0,s*.4)}
+  else{cx.moveTo(0,-p.s);cx.bezierCurveTo(p.s*.9,-p.s*.5,p.s*.7,p.s*.7,0,p.s);cx.bezierCurveTo(-p.s*.7,p.s*.7,-p.s*.9,-p.s*.5,0,-p.s)}
+  cx.fill();cx.restore();
+}
+function tick(){
+  cx.clearRect(0,0,W,H);
+  for(let i=P.length-1;i>=0;i--){
+    const p=P[i];p.ph+=.02;
+    const dx=p.x-mx,dy=p.y-my,dist=Math.hypot(dx,dy);
+    if(dist<110&&dist>0){p.vx+=dx/dist*.5;p.vy+=dy/dist*.15}
+    p.vx*=.97;p.vy+=(1-p.vy)*.01;
+    p.x+=p.vx+Math.sin(p.ph)*.5;p.y+=p.vy;p.r+=p.vr+p.vx*.01;
+    if(p.y>H+20||p.x<-40||p.x>W+40){
+      if(P.length>34||still){P.splice(i,1);continue}
+      Object.assign(p,mk());
+    }
+    if(p.y<-60)p.y=-40;
+    draw(p);
+  }
+  requestAnimationFrame(tick);
+}
+if(!still)tick();
+</script>
 </body>
 </html>
