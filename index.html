@@ -177,9 +177,9 @@ const SETTINGS={
 };
 // Replace these with your own photos and captions
 const PHOTOS=[
-  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"me, being me ♡"},
-  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"a soft little day"},
-  {src:"https://i.ibb.co/Nw5hPJN/a675af81a3fb.jpg",cap:"favourite moment ✿"}
+  {src:"https://i.ibb.co/chd8T0tj/977d620dccc2.jpg",cap:"me, being me ♡"},
+  {src:"https://i.ibb.co/chd8T0tj/977d620dccc2.jpg",cap:"a soft little day"},
+  {src:"https://i.ibb.co/Psfg6765/8968f6914dab.jpg",cap:"favourite moment ✿"}
 ];
 const MOODS=[
   {e:"🌸",t:"Feeling peaceful",c:"soft as a petal today",s:"Peace isn’t quiet. It’s a warm place inside the noise."},
@@ -232,14 +232,18 @@ function setTheme(n){document.body.classList.toggle("night",n);$("themeBtn").tex
 setTheme(store.get("theme")?store.get("theme")==="night":(d.getHours()>=19||d.getHours()<6));
 $("themeBtn").onclick=()=>setTheme(!document.body.classList.contains("night"));
 
-/* music: starts on load; if the browser blocks that, it starts on the first tap or key */
-const aud=$("aud");aud.src=SETTINGS.music;aud.volume=.6;
+/* music: starts on load; if the browser blocks that, it starts on the first real tap/click/key */
+const aud=$("aud");aud.referrerPolicy="no-referrer";aud.src=SETTINGS.music;aud.volume=.6;
 const sync=()=>{$("musicBtn").textContent=aud.paused?"♪":"❚❚"};
 aud.addEventListener("play",sync);aud.addEventListener("pause",sync);
+aud.addEventListener("error",()=>toast("Music link couldn’t load — check the URL"));
 let userPaused=false;
-const evs=["pointerdown","keydown","touchend"];
+const evs=["pointerup","click","keydown","touchend"];
 const off=()=>evs.forEach(e=>removeEventListener(e,unlock,true));
-function unlock(e){if(e.target.closest&&e.target.closest("#musicBtn"))return;off();if(!userPaused)aud.play().catch(()=>{})}
+function unlock(e){
+  if(userPaused||(e.target.closest&&e.target.closest("#musicBtn")))return;
+  aud.play().then(off).catch(()=>{});
+}
 aud.play().catch(()=>evs.forEach(e=>addEventListener(e,unlock,true)));
 $("musicBtn").onclick=()=>{
   off();
